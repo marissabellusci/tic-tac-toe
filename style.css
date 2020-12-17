@@ -1,0 +1,71 @@
+html {
+    background-color: pink;
+    width: 100%;
+    height: 100%;
+}
+
+main{
+    width:fit-content;
+    margin: auto;
+    height: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width:50vw;
+    height:50vw;
+}
+
+.cell {
+    margin:0;
+}
+
+#cell-0 {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+#cell-1 { 
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+#cell-2 {
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+#cell-3{
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+#cell-4{
+    border: 2px solid black;
+}
+
+#cell-5 {
+    border-left:2px solid black;
+    border-top:2px solid black;
+    border-bottom:2px solid black;
+}
+
+#cell-6{
+    border-top:2px solid black;
+    border-right:2px solid black;
+}
+
+#cell-7{
+    border-left:2px solid black;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+}
+
+#cell-8{
+    border-left:2px solid black;
+    border-top: 2px solid black;
+}
