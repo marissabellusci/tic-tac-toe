@@ -1,7 +1,7 @@
 const gameBoard = (() => {
     'use strict';
 
-    const boardArray = ['x','O','x','O','x','O','x','O','x'];
+    const boardArray = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
     console.table(boardArray);
     return boardArray;
 })();
