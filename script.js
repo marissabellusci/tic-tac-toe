@@ -7,6 +7,6 @@ const gameBoard = (() => {
 
 const displayController = (() => {
     'use strict';
-    
+    console.log('display controls go here!')
 
 })();
