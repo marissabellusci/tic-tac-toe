@@ -2,11 +2,13 @@
 const gameBoard = (() => {
     'use strict';
 
+
     document.querySelectorAll('.cell')
     .forEach(cell => {cell.addEventListener('mouseup', function(event){
         const attack = event.target.value;
         game(attack,'x');
     })});
+
 
     const boardArray = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
 
@@ -40,6 +42,20 @@ const game = (pos,y) => {
             document.getElementById('cell-8').textContent = gameBoard[8];
 
             console.table(gameBoard);
+
+            document.querySelectorAll('.cell')
+            .forEach(cell => {cell.addEventListener('mouseover', function(event){
+                if (event.target.textContent != ' '){
+                    console.log (event.target.textContent);
+                    document.querySelector(`#cell-${event.target.value}`).style.cursor = 'not-allowed';
+                }
+        
+                if (event.target.textContent == ' '){
+                    document.querySelector(`#cell-${event.target.value}`).style.cursor = 'pointer';
+                    
+                }
+            })});
+
             })();
 
 
