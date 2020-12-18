@@ -1,12 +1,16 @@
 //module
+let moves = 0;
+
 const gameBoard = (() => {
     'use strict';
-
 
     document.querySelectorAll('.cell')
     .forEach(cell => {cell.addEventListener('mouseup', function(event){
         const attack = event.target.value;
+        if (moves % 2){
         game(attack,playerFactory().oMarker);
+        }
+        else game(attack,playerFactory().xMarker)
     })});
 
     document.getElementById('player-form-button').addEventListener('click',function(e){ 
@@ -27,6 +31,7 @@ const game = (pos,y) => {
     
     if (gameBoard[pos] == ' '){
     gameBoard.splice(pos, 1, y);
+    moves++;
     }
 
     else {
@@ -45,6 +50,13 @@ const game = (pos,y) => {
             document.getElementById('cell-7').textContent = gameBoard[7];
             document.getElementById('cell-8').textContent = gameBoard[8];
 
+            if (moves % 2){
+                document.getElementById("second-message").textContent = "O's turn!"
+            }
+
+            else document.getElementById("second-message").textContent = "X's turn!"
+
+
             console.table(gameBoard);
 
             //cursor style
@@ -61,7 +73,6 @@ const game = (pos,y) => {
             })});
 
             })();
-
 
 
     return gameBoard;
@@ -97,7 +108,7 @@ const playerFactory = () => {
         console.log({playerX, playerO, xName, oName, xMarker, oMarker})
         document.querySelector('#player-form').style = "display:none";
         document.getElementById('error-message').textContent = `${playerX.getName()} goes first!`
-        return {playerX, playerO, xName, oName, xMarker, oMarker};
+        return {xName, oName, xMarker, oMarker};
 };
 
 
