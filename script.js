@@ -60,6 +60,14 @@ const game = (pos,y) => {
 
             else document.getElementById("second-message").textContent = "X's turn!"
 
+            //LOGIC TO CHECK IF GAME OVER
+            (function checkGameOver(){
+                if (xyz){
+                    alert('game over!')
+                }
+
+                else return;
+            })();
 
             console.table(gameBoard);
 
@@ -114,7 +122,6 @@ const playerFactory = () => {
         document.getElementById('error-message').textContent = `${playerX.getName()} goes first!`
         return {xName, oName, xMarker, oMarker};
 };
-
 
 
 
