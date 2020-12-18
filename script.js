@@ -6,13 +6,10 @@ const gameBoard = (() => {
     document.querySelectorAll('.cell')
     .forEach(cell => {cell.addEventListener('mouseup', function(event){
         const attack = event.target.value;
-        game(attack,'x');
+        game(attack,playerFactory().oMarker);
     })});
 
-
-
     const boardArray = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
-
     return boardArray;
 })();
 
