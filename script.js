@@ -147,6 +147,23 @@ const playerFactory = () => {
         return {xName, oName, xMarker, oMarker};
 };
 
+//COMPUTER PLAYER
 
+const computer = () => {
+    'use strict'
 
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+      }
+
+    const attack = getRandomInt(9);
+
+    if (moves % 2){
+        game(attack,playerFactory().oMarker);
+        }
+
+    if (gameBoard[attack] !== ' '){
+            computer();
+    }
+}
 
