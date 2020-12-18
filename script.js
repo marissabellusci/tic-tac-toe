@@ -17,6 +17,10 @@ const gameBoard = (() => {
         playerFactory();
         e.preventDefault();
     });
+
+    document.querySelector('footer').addEventListener('click', function(){
+        location.reload()
+    });
     
 
     const boardArray = [' ',' ',' ',' ',' ',' ',' ',' ',' '];

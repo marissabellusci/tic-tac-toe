@@ -39,6 +39,7 @@ h2 {
 
 .cell:hover {
     cursor: pointer;
+    background: radial-gradient(rgba(255, 255, 255, 0.356),pink) ;
 }
 
 #cell-0 {
@@ -104,7 +105,12 @@ h2 {
 #player-form-button {
     min-width:fit-content;
     width: 8rem;
+    font-size: 50px;
     cursor: pointer;
+}
+
+#player-form-button:hover{
+    text-shadow:2px 1px 1px white;
 }
 
 #player-form {
@@ -126,4 +132,21 @@ h2 {
 
 #player-form > div > label {
     font-size: 2rem;
+}
+
+footer {
+    width:fit-content;
+    margin:auto;
+    text-align: center;
+    font-size: 25px;
+    color: red;
+    border: 3px solid red;
+    border-radius: 45%;
+    padding: 10px;
+
+}
+
+footer:hover {
+    cursor:pointer;
+    background: radial-gradient(rgba(255, 255, 255, 0.644),pink) ;
 }
