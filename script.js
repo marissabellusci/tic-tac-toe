@@ -82,7 +82,7 @@ const playerFactory = () => {
         const playerO = Player(nameO, markerO);
         
         console.log(`${playerX.getName()} vs ${playerO.getName()}`);
-        document.querySelector('h2').textContent = `${playerX.getName()} vs ${playerO.getName()}`;
+        document.querySelector('h2').textContent = `${playerX.getName()} (X) vs ${playerO.getName()} (O)`;
 
         const xMarker = playerX.getMarker();
         const oMarker = playerO.getMarker();
@@ -91,6 +91,7 @@ const playerFactory = () => {
 
         console.log({playerX, playerO, xName, oName, xMarker, oMarker})
         document.querySelector('#player-form').style = "display:none";
+        document.getElementById('error-message').textContent = `${playerX.getName()} goes first!`
         return {playerX, playerO, xName, oName, xMarker, oMarker};
 };
 
