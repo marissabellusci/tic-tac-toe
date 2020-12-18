@@ -63,10 +63,33 @@ const game = (pos,y) => {
 
             console.table(gameBoard);
 
-                        //LOGIC TO CHECK IF GAME OVER
+            //LOGIC TO CHECK IF GAME OVER
                         (function checkGameOver(){
-                            if (xyz){
-                                alert('game over!')
+                            if (
+                                gameBoard[0] == gameBoard[1] && gameBoard[1] == gameBoard[2] && gameBoard[0] !== ' '||
+                                gameBoard[3] == gameBoard[4] && gameBoard[4] == gameBoard[5] && gameBoard[3] !== ' '||
+                                gameBoard[6] == gameBoard[7] && gameBoard[7] == gameBoard[8] && gameBoard[6] !== ' '||
+                                gameBoard[0] == gameBoard[3] && gameBoard[3] == gameBoard[6] && gameBoard[0] !== ' '||
+                                gameBoard[1] == gameBoard[4] && gameBoard[4] == gameBoard[7] && gameBoard[1] !== ' '||
+                                gameBoard[2] == gameBoard[5] && gameBoard[5] == gameBoard[8] && gameBoard[2] !== ' '||
+                                gameBoard[0] == gameBoard[4] && gameBoard[4] == gameBoard[8] && gameBoard[0] !== ' '||
+                                gameBoard[2] == gameBoard[4] && gameBoard[4] == gameBoard[6] && gameBoard[2] !== ' '
+                            ){
+                                alert(`game over!`)
+                                document.querySelector('.container').style = "display:none;";
+                                document.getElementById("second-message").textContent = `Click reset to play again!`
+                                let winner = null;
+                                if(moves % 2){winner = 'X'
+                                } else {winner='O'};
+                                document.getElementById('error-message').textContent = `${winner} Won the Game!` 
+                            
+                            }
+
+                            else if (gameBoard.includes(' ')==false){
+                                alert("Game over. It's a draw!")
+                                document.querySelector('.container').style = "display:none;";
+                                document.getElementById("second-message").textContent = `Click reset to play again!`
+                                document.getElementById('error-message').textContent = `It's a draw!` 
                             }
             
                             else return;
