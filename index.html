@@ -7,9 +7,14 @@
   <title>Tic-Tac-Toe</title>
   </head>
   <body>
-      <header></header>
+      <header>
+          <h1>Tic-Tac-Toe</h1>
+          <h2></h2>
+      </header>
 
     <main>
+
+    <container>
 
     <figure class="container">
         <data class="cell" id="cell-0" value="0"></data>
@@ -25,11 +30,24 @@
 
     <section id="error-message"></section>
 
+    </container>
+
     <section> 
         <form id="player-form"> 
-            <input type="text" name="playerXname"></input>
-            <input type="text" name="playerOname"></input>
-            <button id="player-form-button">Start!</button>
+            <div>
+                <label for="playerXname">Player X</label>
+                <input type="text" name="playerXname" placeholder="Opponent Name"></input>
+            </div>
+
+            <div>
+                <label for="playerOname">Player O</label>
+                <input type="text" name="playerOname" placeholder="Opponent Name"></input>
+             </div>
+
+            <div>
+                <div id="player-form-button">Start!</div>
+            </div>
+
 
             
         </form>

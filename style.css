@@ -8,14 +8,24 @@ main{
     width:fit-content;
     margin: auto;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+h1,
+h2 {
+    width: fit-content;
+    margin: 10px auto 10px auto;
 }
 
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    width:50vw;
-    height:50vw;
+    width:40vw;
+    height:40vw;
 }
 
 .cell {
@@ -87,4 +97,24 @@ main{
 #player-form-button {
     min-width:fit-content;
     width: 8rem;
+}
+
+#player-form {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+#player-form > div > input, div {
+    margin: 20px;
+    width: fit-content;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#player-form > div > label {
+    font-size: 2rem;
 }

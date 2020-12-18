@@ -9,8 +9,6 @@ const gameBoard = (() => {
         game(attack,'x');
     })});
 
-    const player1 = document.getElementById('player1-field');
-    const player2 = document.getElementById('player2-field');
 
 
     const boardArray = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
@@ -74,8 +72,8 @@ const playerFactory = () => {
     let markerO = "O";
     let nameO = document.getElementById('player-form').playerOname.value;
 
-        const Player = (name,marker) => {
-         const getName = () => name.toUpperCase();
+    const Player = (name,marker) => {
+        const getName = () => name.toUpperCase();
             const getMarker = () => marker.toUpperCase();
             return {getName, getMarker};
         };
@@ -84,12 +82,23 @@ const playerFactory = () => {
         const playerO = Player(nameO, markerO);
         
         console.log(`${playerX.getName()} vs ${playerO.getName()}`);
+        document.querySelector('h2').textContent = `${playerX.getName()} vs ${playerO.getName()}`;
 
-        return {nameX, markerX, nameO, markerO};
+        const xMarker = playerX.getMarker();
+        const oMarker = playerO.getMarker();
+        const xName = playerX.getName();
+        const oName = playerX.getName();
+
+        console.log({playerX, playerO, xName, oName, xMarker, oMarker})
+        document.querySelector('#player-form').style = "display:none";
+        return {playerX, playerO, xName, oName, xMarker, oMarker};
 };
+
+
+document.getElementById('player-form-button').addEventListener('click',function(e){
     
-
-
-
+    playerFactory();
+    e.preventDefault();
+});
 
 
