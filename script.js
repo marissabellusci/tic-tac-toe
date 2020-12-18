@@ -9,6 +9,12 @@ const gameBoard = (() => {
         game(attack,playerFactory().oMarker);
     })});
 
+    document.getElementById('player-form-button').addEventListener('click',function(e){ 
+        playerFactory();
+        e.preventDefault();
+    });
+    
+
     const boardArray = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
     return boardArray;
 })();
@@ -61,6 +67,8 @@ const game = (pos,y) => {
     return gameBoard;
 
 };
+
+// fcty function
 const playerFactory = () => {
 
     let markerX = "x";
@@ -93,10 +101,5 @@ const playerFactory = () => {
 };
 
 
-document.getElementById('player-form-button').addEventListener('click',function(e){
-    
-    playerFactory();
-    e.preventDefault();
-});
 
 
