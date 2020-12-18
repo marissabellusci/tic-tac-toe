@@ -1,6 +1,6 @@
-//module
 let moves = 0;
 
+//module
 const gameBoard = (() => {
     'use strict';
 
