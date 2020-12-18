@@ -9,6 +9,9 @@ const gameBoard = (() => {
         game(attack,'x');
     })});
 
+    const player1 = document.getElementById('player1-field');
+    const player2 = document.getElementById('player2-field');
+
 
     const boardArray = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
 
@@ -43,10 +46,10 @@ const game = (pos,y) => {
 
             console.table(gameBoard);
 
+            //cursor style
             document.querySelectorAll('.cell')
             .forEach(cell => {cell.addEventListener('mouseover', function(event){
                 if (event.target.textContent != ' '){
-                    console.log (event.target.textContent);
                     document.querySelector(`#cell-${event.target.value}`).style.cursor = 'not-allowed';
                 }
         
@@ -63,10 +66,28 @@ const game = (pos,y) => {
     return gameBoard;
 
 };
+const playerFactory = () => {
 
-const player = (() => {
-    return console.log('new player!')
-});
+    let markerX = "x";
+    let nameX = document.getElementById('player-form').playerXname.value;
+
+    let markerO = "O";
+    let nameO = document.getElementById('player-form').playerOname.value;
+
+        const Player = (name,marker) => {
+         const getName = () => name.toUpperCase();
+            const getMarker = () => marker.toUpperCase();
+            return {getName, getMarker};
+        };
+
+        const playerX = Player(nameX, markerX);
+        const playerO = Player(nameO, markerO);
+        
+        console.log(`${playerX.getName()} vs ${playerO.getName()}`);
+
+        return {nameX, markerX, nameO, markerO};
+};
+    
 
 
 

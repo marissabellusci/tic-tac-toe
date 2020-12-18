@@ -83,3 +83,8 @@ main{
     width:fit-content;
     margin: 10px auto 10px auto;
 }
+
+#player-form-button {
+    min-width:fit-content;
+    width: 8rem;
+}
