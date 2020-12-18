@@ -150,3 +150,49 @@ footer:hover {
     cursor:pointer;
     background: radial-gradient(rgba(255, 255, 255, 0.644),pink) ;
 }
+
+@media (max-width: 768px) {
+    main{
+        flex-direction:column;
+        margin:auto;
+    }
+
+    #player-form > div > input, div{
+        margin:1vw;
+        font-size: 6vw;
+    }
+
+    .cell {
+        font-size: 15vw;
+    }
+
+    .container {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    #second-message {
+        font-size: 10vw;
+        text-align: center;
+    }
+
+    #error-message {
+        text-align: center;
+    }
+
+    h1,
+    h2 {
+        text-align: center;
+    }
+
+    h2{
+        font-size: 8vw;
+    }
+
+    footer {
+        font-size: 5vw;
+        padding: 1vw;
+        border: solid 1px red;
+    }
+
+}
