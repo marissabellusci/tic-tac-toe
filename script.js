@@ -58,18 +58,19 @@ const game = (pos,y) => {
                 document.getElementById("second-message").textContent = "O's turn!"
             }
 
-            else document.getElementById("second-message").textContent = "X's turn!"
+            else document.getElementById("second-message").textContent = "X's turn!";
 
-            //LOGIC TO CHECK IF GAME OVER
-            (function checkGameOver(){
-                if (xyz){
-                    alert('game over!')
-                }
-
-                else return;
-            })();
 
             console.table(gameBoard);
+
+                        //LOGIC TO CHECK IF GAME OVER
+                        (function checkGameOver(){
+                            if (xyz){
+                                alert('game over!')
+                            }
+            
+                            else return;
+                        })();
 
             //cursor style
             document.querySelectorAll('.cell')
@@ -122,6 +123,7 @@ const playerFactory = () => {
         document.getElementById('error-message').textContent = `${playerX.getName()} goes first!`
         return {xName, oName, xMarker, oMarker};
 };
+
 
 
 
