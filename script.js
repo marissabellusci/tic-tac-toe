@@ -1,4 +1,5 @@
 let moves = 0;
+let over = null;
 
 //module
 const gameBoard = (() => {
@@ -36,6 +37,10 @@ const game = (pos,y) => {
     if (gameBoard[pos] == ' '){
     gameBoard.splice(pos, 1, y);
     moves++;
+    if (document.getElementById('checkbox').checked){
+        window.setTimeout(computer,1000);
+
+    }
     }
 
     else {
@@ -62,7 +67,7 @@ const game = (pos,y) => {
 
 
             console.table(gameBoard);
-
+            
             //LOGIC TO CHECK IF GAME OVER
                         (function checkGameOver(){
                             if (
@@ -78,21 +83,27 @@ const game = (pos,y) => {
                                 alert(`game over!`)
                                 document.querySelector('.container').style = "display:none;";
                                 document.getElementById("second-message").textContent = `Click reset to play again!`
+                                over = true;
                                 let winner = null;
                                 if(moves % 2){winner = 'X'
                                 } else {winner='O'};
                                 document.getElementById('error-message').textContent = `${winner} Won the Game!` 
-                            
+                                return over;
                             }
 
                             else if (gameBoard.includes(' ')==false){
                                 alert("Game over. It's a draw!")
+                                over = true;
                                 document.querySelector('.container').style = "display:none;";
                                 document.getElementById("second-message").textContent = `Click reset to play again!`
                                 document.getElementById('error-message').textContent = `It's a draw!` 
+                                return over;
                             }
             
-                            else return;
+                            else {
+                                over = false;
+                                return over;
+                            };
                         })();
 
             //cursor style
@@ -111,7 +122,7 @@ const game = (pos,y) => {
             })();
 
 
-    return gameBoard;
+    return gameBoard,over;
 
 };
 
@@ -124,6 +135,7 @@ const playerFactory = () => {
     let markerO = "O";
     let nameO = document.getElementById('player-form').playerOname.value;
 
+  
     const Player = (name,marker) => {
         const getName = () => name.toUpperCase();
             const getMarker = () => marker.toUpperCase();
@@ -134,7 +146,7 @@ const playerFactory = () => {
         const playerO = Player(nameO, markerO);
         
         console.log(`${playerX.getName()} vs ${playerO.getName()}`);
-        document.querySelector('h2').textContent = `${playerX.getName()} (X) vs ${playerO.getName()} (O)`;
+        document.querySelector('h2').textContent = `${playerX.getName()} vs ${playerO.getName()}`;
 
         const xMarker = playerX.getMarker();
         const oMarker = playerO.getMarker();
@@ -152,18 +164,87 @@ const playerFactory = () => {
 const computer = () => {
     'use strict'
 
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
-      }
-
-    const attack = getRandomInt(9);
-
-    if (moves % 2){
-        game(attack,playerFactory().oMarker);
-        }
-
-    if (gameBoard[attack] !== ' '){
-            computer();
+    if (over){
+        console.log('game over')
+        return;
     }
+
+    else{
+
+             function getRandomInt(max) {
+                 return Math.floor(Math.random() * Math.floor(max));
+             };
+    
+         
+             let attack;
+             if (gameBoard[0] == gameBoard[1] && gameBoard[0] !== ' ' && gameBoard[2] == ' ' ||
+                 gameBoard[8] == gameBoard[5] && gameBoard[8] !== ' ' && gameBoard[2] == ' ' ||
+                 gameBoard[6] == gameBoard[4] && gameBoard[6] !== ' ' && gameBoard[2] == ' '
+             ){
+                 attack = 2;
+                
+            
+             } else if (gameBoard[6] == gameBoard[3] && gameBoard[6] !== ' ' && gameBoard[0] == ' ' ||
+                        gameBoard[8] == gameBoard[4] && gameBoard[8] !== ' ' && gameBoard[0] == ' ' ||
+                        gameBoard[2] == gameBoard[1] && gameBoard[2] !== ' ' && gameBoard[0] == ' ' 
+             ){
+                attack = 0;
+
+             } else if (gameBoard[0] == gameBoard[2] && gameBoard[0] !== ' ' && gameBoard[1] == ' ' ||
+                        gameBoard[4] == gameBoard[7] && gameBoard[4] !== ' ' && gameBoard[1] == ' ' 
+             ){
+                attack = 1;
+
+             } else if (gameBoard[0] == gameBoard[6] && gameBoard[0] !== ' ' && gameBoard[3] == ' ' ||
+                        gameBoard[4] == gameBoard[5] && gameBoard[4] !== ' ' && gameBoard[3] == ' ' 
+             ){
+                attack = 3;
+
+            } else if (gameBoard[0] == gameBoard[8] && gameBoard[0] !== ' ' && gameBoard[4] == ' ' ||
+                       gameBoard[2] == gameBoard[6] && gameBoard[2] !== ' ' && gameBoard[4] == ' ' ||
+                       gameBoard[1] == gameBoard[7] && gameBoard[1] !== ' ' && gameBoard[4] == ' ' ||
+                       gameBoard[3] == gameBoard[5] && gameBoard[3] !== ' ' && gameBoard[4] == ' ' 
+             ){
+                attack = 4;
+
+            } else if (gameBoard[2] == gameBoard[8] && gameBoard[2] !== ' ' && gameBoard[5] == ' ' ||
+                       gameBoard[3] == gameBoard[4] && gameBoard[3] !== ' ' && gameBoard[5] == ' ' 
+             ){
+                attack = 5;
+
+            } else if (gameBoard[8] == gameBoard[7] && gameBoard[8] !== ' ' && gameBoard[6] == ' ' ||
+                       gameBoard[0] == gameBoard[3] && gameBoard[0] !== ' ' && gameBoard[6] == ' ' ||
+                       gameBoard[2] == gameBoard[4] && gameBoard[2] !== ' ' && gameBoard[6] == ' ' 
+             ){
+                attack = 6;
+
+            } else if (gameBoard[1] == gameBoard[4] && gameBoard[1] !== ' ' && gameBoard[7] == ' ' ||
+                       gameBoard[6] == gameBoard[8] && gameBoard[6] !== ' ' && gameBoard[7] == ' '
+             ){
+                attack = 7;
+
+            } else if (gameBoard[0] == gameBoard[4] && gameBoard[0] !== ' ' && gameBoard[8] == ' ' ||
+                       gameBoard[6] == gameBoard[7] && gameBoard[6] !== ' ' && gameBoard[8] == ' ' ||
+                       gameBoard[2] == gameBoard[5] && gameBoard[2] !== ' ' && gameBoard[8] == ' ' 
+             ){
+                attack = 8;
+
+            } else { 
+                 attack = getRandomInt(9);
+        
+             };
+    
+    
+
+             if (moves % 2){
+                 game(attack,playerFactory().oMarker);
+                 }
+
+             if (gameBoard[attack] !== ' '){
+                     computer();
+             }
+
+             else return;
 }
+}           
 

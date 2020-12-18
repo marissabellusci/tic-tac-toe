@@ -134,6 +134,16 @@ h2 {
     font-size: 2rem;
 }
 
+#player-form > div > #checkbox {
+    width: 2vw;
+    height: 2vw;
+    margin: 4px;
+}
+
+p {
+    margin: 0;
+}
+
 footer {
     width:fit-content;
     margin:auto;
